@@ -6,8 +6,8 @@ Scripts for boosting my pelican blogging workflow
 Config
 ======
 
-AUTHOR = 'xr09'
-DEFAULT_CATEGORY = 'dev'
+    AUTHOR = 'xr09'
+    DEFAULT_CATEGORY = 'dev'
 
 
 
