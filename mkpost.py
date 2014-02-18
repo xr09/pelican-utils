@@ -11,9 +11,10 @@ import re
 from unicodedata import normalize
 
 AUTHOR = 'xr09'
-TODAY = datetime.date.today().isoformat()
-NOW = time.strftime('%H:%M')
 DEFAULT_CATEGORY = 'dev'
+
+today = datetime.date.today().isoformat()
+now = time.strftime('%H:%M')
 
 # slugify from http://flask.pocoo.org/snippets/5/
 _punct_re = re.compile(r'[\t !"#$%&\'()*\-/<=>?@\[\\\]^_`{|},.]+')
@@ -41,20 +42,20 @@ if os.path.exists(slug+'.rst'):
     print('A file with the same title already exists. Aborting!')
     sys.exit(1)
 
-SUBHEADER = '#' * len(title)
+subheader = '#' * len(title)
 
 TEMPLATE = """{title}
-{SUBHEADER}
-:date: {TODAY} {NOW}
+{subheader}
+:date: {today} {now}
 :category: {DEFAULT_CATEGORY}
 :tags: 
 :author: {AUTHOR}
 :excerpt:
 """.format(**locals())
- 
+
 
 with open(slug+'.rst', 'w') as f:
     f.write(TEMPLATE)
 
-# go blog, speak your mind with pelican    
-os.system('xdg-open '+slug+'.rst')
+# enable on Linux
+#os.system('xdg-open ' + slug + '.rst')
